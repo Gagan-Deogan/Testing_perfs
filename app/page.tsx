@@ -11,15 +11,27 @@ const Container = ({children}:{children: JSX.Element|JSX.Element[]}) =>{
   return <div className="flex flex-row flex-nowrap justify-between gap-2 pb-2" >{children}</div>
 } 
 
-const ProductArr = new Array(1000).fill(0)
-export default function Home() {
-  console.log({ProductArr})
+export default async function Home(props:any) {
+  const data:any = await getData()
   return (
     <main className="flex min-h-screen flex-col p-4">
-      {ProductArr.map(()=><Container>
+      {data.map(()=><Container>
         <ProductCard/>
         <ProductCard/>
       </Container>)}
     </main>
   )
+}
+
+async function getData() {
+  // Fetch data from external API
+  // Pass data to the page via props
+  const promise = new Promise((res, rej)=>{
+    setTimeout(()=>{
+      const ProductArr = new Array(1000).fill({image: "/b3897_512.webp", name: "levi's"})
+      res(ProductArr)
+    }, 100)
+  });
+
+  return promise;
 }
