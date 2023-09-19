@@ -28,7 +28,7 @@ async function getData() {
   // Pass data to the page via props
   const promise = new Promise((res, rej)=>{
     setTimeout(()=>{
-      const ProductArr = new Array(1000).fill({image: "/b3897_512.webp", name: "levi's"})
+      const ProductArr = new Array(50).fill({image: "/b3897_512.webp", name: "levi's"})
       res(ProductArr)
     }, 100)
   });
